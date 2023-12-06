@@ -8,5 +8,5 @@ def print_matrix_integer(matrix=[[]]):
             end = ""
             if i < len(row):
                 end = " "
-            print("{}".format(row[i]), end=end)
+            print("{:d}".format(row[i]), end=end)
         print()
