@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "lists.h"
 
+listint_t *copy_and_reverse(listint_t *head);
+
 /**
   * is_palindrome - checks if a singly linked list is a palindrome
   * @head: pointer to the head of the linked list
@@ -8,33 +10,52 @@
   */
 int is_palindrome(listint_t **head)
 {
-	listint_t *check_a = *head, *check_b = *head, *check_c;
-	int len = 0, hwDeep = 0, j;
+	listint_t *slow = *head, *fast = *head, *second_half;
+	int result;
 
 	if (head == NULL || *head == NULL)
 		return (1);
 
-	while (check_b)
+	while (fast && fast->next)
 	{
-		len++;
-		check_b = check_b->next;
+		fast = fast->next->next;
+		slow = slow->next;
 	}
 
-	for (hwDeep = 1; hwDeep <= len / 2; hwDeep++)
+	/* Odd number of nodes */
+	if (fast)
+		slow = slow->next;
+
+	second_half = copy_and_reverse(slow);
+
+	while (second_half && (*head)->n == second_half->n)
 	{
-		check_c = check_a->next;
-		check_b = check_a;
-		for (j = 1; check_c; check_c = check_c->next)
-		{
-			if (j != hwDeep)
-				j++;
-			else
-				check_b = check_b->next;
-		}
-		if (check_b->n != check_a->n)
-			return (0);
-		check_a = check_a->next;
+		*head = (*head)->next;
+		second_half = second_half->next;
 	}
 
-	return (1);
+	result = (second_half == NULL) ? 1 : 0;
+	free_listint(second_half);
+	return (result);
+}
+
+/**
+  * copy_and_reverse - copy and reverse linked list
+  * @head: pointer to head of linked list to be reversed
+  * Return: pointer to reversed linked list
+  */
+listint_t *copy_and_reverse(listint_t *head)
+{
+	listint_t *prev = NULL, *current = NULL;
+
+	while (head != NULL)
+	{
+		current = malloc(sizeof(listint_t));
+		current->n = head->n;
+		current->next = prev;
+		prev = current;
+		head = head->next;
+	}
+
+	return (prev);
 }
