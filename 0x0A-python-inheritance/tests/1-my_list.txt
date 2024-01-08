@@ -1,0 +1,54 @@
+The ``1-my_list.py`` module
+============================
+
+Testing the ``MyList`` class
+----------------------------
+
+Importing the ``MyList`` class:
+    >>> MyList = __import__("1-my_list").MyList
+
+Creating an instance of ``MyList``:
+    >>> my_list = MyList()
+
+Checking the documentation:
+    >>> len(MyList.__doc__) > 1
+    True
+    >>> len(MyList.print_sorted.__doc__) > 1
+    True
+
+Testing the print_sorted method:
+    >>> my_list.print_sorted()
+    []
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4]
+    >>> my_list.append(0)
+    >>> my_list.print_sorted()
+    [0, 1, 2, 3, 4]
+    >>> my_list.append(-1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 1, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 1, 1, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 1, 1, 1, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4]
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [-1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4]
