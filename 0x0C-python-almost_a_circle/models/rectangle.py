@@ -9,10 +9,10 @@ class Rectangle(Base):
         """ Initializes an instance of the Rectangle class """
 
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
     @property
     def width(self):
@@ -23,6 +23,11 @@ class Rectangle(Base):
     @width.setter
     def width(self, new):
         """ setter for width """
+
+        if type(new) is not int:
+            raise TypeError("width must be an integer")
+        if new <= 0:
+            raise ValueError("width must be > 0")
 
         self.__width = new
 
@@ -36,6 +41,11 @@ class Rectangle(Base):
     def height(self, new):
         """ setter for height """
 
+        if type(new) is not int:
+            raise TypeError("height must be an integer")
+        if new <= 0:
+            raise ValueError("height must be > 0")
+
         self.__height = new
 
     @property
@@ -48,6 +58,11 @@ class Rectangle(Base):
     def x(self, new):
         """ setter for x """
 
+        if type(new) is not int:
+            raise TypeError("x must be an integer")
+        if new < 0:
+            raise ValueError("x must be >= 0")
+
         self.__x = new
 
     @property
@@ -59,5 +74,10 @@ class Rectangle(Base):
     @y.setter
     def y(self, new):
         """ setter for y """
+
+        if type(new) is not int:
+            raise TypeError("y must be an integer")
+        if new < 0:
+            raise ValueError("y must be >= 0")
 
         self.__y = new
