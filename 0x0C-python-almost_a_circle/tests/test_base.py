@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This module defines a test for the base model """
+""" This module defines a test for the base class """
 import unittest
 
 from models.base import Base
