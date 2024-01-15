@@ -2,6 +2,8 @@
 """ This module defines the Base class for the project """
 import json
 import csv
+import turtle
+import time
 
 
 class Base:
@@ -105,3 +107,48 @@ class Base:
                 return [cls.create(**obj) for obj in list_dicts]
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ Opens a window and draws all the Rectangles and Squares """
+
+        turtle.setup(width=.35, height=.5, startx=0, starty=0)
+        turtle.title("Rectangle and Squares drawing")
+        turtle.delay(15)
+        t = turtle.Turtle()
+        t.hideturtle()
+
+        if list_rectangles is not None and list_rectangles != []:
+            t.color("red", "yellow")
+            for obj in list_rectangles:
+                t.up()
+                t.home()
+                t.goto(obj.x, obj.y)
+                t.begin_fill()
+                t.down()
+                for i in range(2):
+                    t.forward(obj.width)
+                    t.right(90)
+                    t.forward(obj.height)
+                    t.right(90)
+                t.end_fill()
+
+        time.sleep(1.5)
+
+        if list_squares is not None and list_squares != []:
+            t.color("green", "blue")
+            for obj in list_squares:
+                t.up()
+                t.home()
+                t.goto(obj.x, obj.y)
+                t.begin_fill()
+                t.down()
+                for i in range(2):
+                    t.forward(obj.width)
+                    t.right(90)
+                    t.forward(obj.height)
+                    t.right(90)
+                t.end_fill()
+
+        time.sleep(3)
+        turtle.bye()
