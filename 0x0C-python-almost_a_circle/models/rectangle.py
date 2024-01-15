@@ -2,6 +2,7 @@
 """ Module that defines the Rectangle class that inherits from Base """
 from models.base import Base
 
+
 class Rectangle(Base):
     """ Defines the Rectangle class that inherits from base """
 
@@ -19,7 +20,7 @@ class Rectangle(Base):
         """ getter for width """
 
         return self.__width
-    
+
     @width.setter
     def width(self, new):
         """ setter for width """
@@ -36,7 +37,7 @@ class Rectangle(Base):
         """ getter for height """
 
         return self.__height
-    
+
     @height.setter
     def height(self, new):
         """ setter for height """
@@ -53,7 +54,7 @@ class Rectangle(Base):
         """ getter for x """
 
         return self.__x
-    
+
     @x.setter
     def x(self, new):
         """ setter for x """
@@ -70,7 +71,7 @@ class Rectangle(Base):
         """ getter for y """
 
         return self.__y
-    
+
     @y.setter
     def y(self, new):
         """ setter for y """
@@ -99,7 +100,8 @@ class Rectangle(Base):
     def __str__(self):
         """ Returns a string format for the object """
 
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """ Updates the attributes of the objects:
