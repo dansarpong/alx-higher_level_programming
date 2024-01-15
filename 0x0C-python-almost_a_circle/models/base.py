@@ -42,3 +42,12 @@ class Base:
         """ Returns the list of the JSON string representation json_string """
 
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ Returns an instance with all atributes already set """
+
+        if dictionary and dictionary != {}:
+            new = cls(1, 1)
+            new.update(**dictionary)
+            return new
