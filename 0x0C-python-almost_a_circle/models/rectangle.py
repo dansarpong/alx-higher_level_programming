@@ -85,12 +85,26 @@ class Rectangle(Base):
     def area(self):
         """ Function to find the area value of the rectangle instance """
 
-        return (self.__width * self.__height)
+        return (self.width * self.height)
 
     def display(self):
         """ Function to print the rectangle with # """
 
-        for y in range(self.__height):
-            for x in range(self.__width):
-                print("#", end="")
-            print()
+        print("\n" * self.y)
+
+        for i in range(self.height):
+            line = (" " * self.x) + ("#" * self.width)
+            print(line, end="")
+
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args):
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
