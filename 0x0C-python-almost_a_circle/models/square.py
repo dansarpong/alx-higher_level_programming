@@ -5,7 +5,7 @@ from models.rectangle import Rectangle
 
 class Square(Rectangle):
     """ Defines the Square class that inherits from Rectangle """
-    
+
     def __init__(self, size, x=0, y=0, id=None):
         """ Initializes an instance of the Square class """
 
@@ -16,13 +16,13 @@ class Square(Rectangle):
 
         return "[Square] ({}) {}/{} - {}".format(
             self.id, self.x, self.y, self.width)
-    
+
     @property
     def size(self):
         """ Getter for size attribute """
 
         return self.width
-    
+
     @size.setter
     def size(self, new):
         """ Setter for size attribute """
@@ -46,3 +46,11 @@ class Square(Rectangle):
             self.y = args[3]
         except IndexError:
             pass
+
+    def to_dictionary(self):
+        """ Returns the dictionary representation of the instance """
+
+        ref = super().to_dictionary()
+        ref.pop("width")
+        ref["size"] = ref.pop("height")
+        return ref
