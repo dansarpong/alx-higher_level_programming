@@ -97,9 +97,14 @@ class Rectangle(Base):
             print(line)
 
     def __str__(self):
+        """ Returns a string format for the object """
+
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args):
+        """ Updates the attributes of the objects:
+        id, width, height, x, y - respectively """
+
         try:
             self.id = args[0]
             self.width = args[1]
